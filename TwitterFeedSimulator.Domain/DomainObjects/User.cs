@@ -47,6 +47,7 @@ namespace TwitterFeedSimulator.Domain.DomainObjects
 
         private void SetUserAndFollowing(IList<string> users)
         {
+            //iterate through the user list by 2, assumed that each userline entry to work out the user-follower relation.
             var index = 0;
             while (index < users.Count)
             {
