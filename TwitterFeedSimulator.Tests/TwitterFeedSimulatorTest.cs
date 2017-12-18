@@ -41,7 +41,14 @@ namespace TwitterFeedSimulator.Tests
 
             Assert.IsNotNull(users);
         }
+        [TestMethod]
+        public void CanGetTweet()
+        {
+            var tweet = new Tweet();
+            var users = tweet.GetTweets();
 
+            Assert.IsNotNull(users);
+        }
         [TestMethod]
         public void CanSetupUser()
         {

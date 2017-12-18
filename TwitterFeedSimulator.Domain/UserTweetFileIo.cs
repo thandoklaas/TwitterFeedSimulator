@@ -11,8 +11,7 @@ namespace TwitterFeedSimulator.Domain
 
         public UserTweetFileIo()
         {
-
-            FilePath =  ConfigurationManager.AppSettings["TextFilePath"];//@"C:\Work\TwitterFeedSimulator\";// COuldn't get this to work for some reason
+            FilePath =  ConfigurationManager.AppSettings["TextFilePath"];
         }
 
         public string ReadFile(string fileName)
