@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TwitterFeedSimulator.Domain.DomainObjects;
 
@@ -19,11 +20,9 @@ namespace TwitterFeedSimulator.Domain
         public string SimulateFeed()
         {
             var sb = new StringBuilder();
-            foreach (var user in User.UserDetails)
+            foreach (var user in User.UserDetails.OrderBy(i => i.User))
             {
-                sb.AppendLine();
                 sb.AppendLine(user.User);
-                sb.AppendLine();
                 foreach (var tweet in Tweet.TweetDetails)
                 {
                     string messages;

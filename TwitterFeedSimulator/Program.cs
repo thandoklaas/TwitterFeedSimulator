@@ -16,7 +16,7 @@ namespace TwitterFeedSimulator
             Console.WriteLine("----Twitter feed Simulator-----");
             Console.WriteLine(feed.SimulateFeed());
             Console.WriteLine("----Twitter feed Simulator End-----");
-            Console.Read();
+            Console.ReadKey();
         }
     }
 }
