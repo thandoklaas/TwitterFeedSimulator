@@ -24,11 +24,6 @@ namespace TwitterFeedSimulator.Domain.DomainObjects
             return TweetDetails;
         }
 
-        private void GetUserFileContent()
-        {
-            TweetFileContent = File.GetTweetFileContent();
-        }
-
         private void BuildTweetList()
         {
             var tweetList = TweetFileContent.Split(new[] {">", "\n", "\r\n"}, StringSplitOptions.RemoveEmptyEntries);
@@ -59,5 +54,9 @@ namespace TwitterFeedSimulator.Domain.DomainObjects
             }
         }
 
+        private void GetUserFileContent()
+        {
+            TweetFileContent = File.GetTweetFileContent();
+        }
     }
 }

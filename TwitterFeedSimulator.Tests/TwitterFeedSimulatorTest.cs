@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TwitterFeedSimulator.Domain;
 using TwitterFeedSimulator.Domain.DomainObjects;
 
@@ -73,6 +74,37 @@ namespace TwitterFeedSimulator.Tests
         {
             var feed  = new TwitterFeed();
             Assert.AreNotEqual(feed.SimulateFeed(), string.Empty);
+        }
+
+        [TestMethod]
+        public void UsersCreated()
+        {
+            var user = new User();
+            Assert.IsTrue(user.UserDetails.Any(x => !string.IsNullOrWhiteSpace(x.User)));
+        }
+        [TestMethod]
+        public void UserFollowingCreated()
+        {
+            var user = new User();
+            Assert.IsTrue(user.UserDetails.Any(x => x.Following != null && x.Following.Any()));
+        }
+        [TestMethod]
+        public void TweetUsersCreated()
+        {
+            var tweet = new Tweet();
+            Assert.IsTrue(tweet.TweetDetails.Any(x => !string.IsNullOrWhiteSpace(x.User)));
+        }
+        [TestMethod]
+        public void TweetMessagesCreated()
+        {
+            var tweet = new Tweet();
+            Assert.IsTrue(tweet.TweetDetails.Any(x=> !string.IsNullOrWhiteSpace(x.TweetMessage)));
+        }
+        [TestMethod]
+        public void TweetMessagesLessThan140Characters()
+        {
+            var tweet = new Tweet();
+            Assert.IsFalse(tweet.TweetDetails.Any(x => x.TweetMessage.Count() > 140));
         }
     }
 }
